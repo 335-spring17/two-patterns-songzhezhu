@@ -32,11 +32,13 @@ public class ButtonView extends JPanel implements OurObserver {
 
   // This method is called by OurObservable's notifyObservers()
   public void update() {
-    if (theGame.maxMovesRemaining() == theGame.size() * theGame.size())
-      resetButtons(true);
-
-    if (!theGame.stillRunning())
+	  if (theGame.maxMovesRemaining() == theGame.size() * theGame.size()){
+		  resetButtons(true);
+	  }
+    if (!theGame.stillRunning()){
       resetButtons(false);
+      updateButtons();
+    }
     else {
       updateButtons();
       stateButton.setText("Click your move");
